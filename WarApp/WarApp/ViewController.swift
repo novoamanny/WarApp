@@ -30,16 +30,37 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    var leftScore = 0
+    var rightScore = 0
+    //let loop = true;
 
     @IBAction func dealButton(_ sender: Any) {
         
-        let leftRandomNum = arc4random_uniform(13) + 2 // 2 - 14
+        // Random Number generators
+        let leftRandomNum = arc4random_uniform(13) + 2; // 2 - 14
         
-        let rightRandomNum = arc4random_uniform(13) + 2 // 2 - 14
+        let rightRandomNum = arc4random_uniform(13) + 2; // 2 - 14
         
         leftImageView.image = UIImage(named: "card\(leftRandomNum)")
         
         rightImageView.image = UIImage(named: "card\(rightRandomNum)")
+        
+        
+        // Compare
+        
+        if (leftRandomNum > rightRandomNum){
+            leftScore += 1
+            leftScoreLabel.text = String(leftScore)
+        }
+        else if (rightRandomNum > leftRandomNum){
+            rightScore += 1
+            rightScoreLabel.text = String(rightScore)
+        }
+        else{
+            
+        }
+        
         
         
     }
